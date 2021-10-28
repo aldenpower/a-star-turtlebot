@@ -15,6 +15,10 @@
     <rosparam file="$(find ttb_astar)/param/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find ttb_astar)/param/move_base_params.yaml" command="load" />
     <rosparam file="$(find ttb_astar)/param/dwa_local_planner_params_burger.yaml" command="load" />
+    
+    <!-- Arquivo de configuração do planejador global para Astar -->
+    <rosparam file="$(find ttb_astar)/param/planner-a-star.yaml" command="load" />
+
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
