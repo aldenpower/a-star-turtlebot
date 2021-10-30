@@ -10,13 +10,10 @@
     <arg name="model" value="$(arg model)" />
   </include>
 
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  <!-- Gmapping -->
+  <include file="$(find ttb_astar)/launch/gmapping_a_star.launch"/> 
 
-  <!-- AMCL -->
-  <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
-
-  <!-- move_base -->
+  <!-- Move_base -->
   <include file="$(find ttb_astar)/launch/move_base_a_star.launch">
     <arg name="model" value="$(arg model)" />
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
@@ -25,6 +22,6 @@
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find ttb_astar)/rviz/turtlebot3_navigation.rviz"/>
+          args="-d $(find ttb_astar)/rviz/a-star-navigation.rviz"/>
   </group>
 </launch>
