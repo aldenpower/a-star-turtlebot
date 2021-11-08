@@ -4,6 +4,7 @@
   <arg name="cmd_vel_topic" default="/cmd_vel" />
   <arg name="odom_topic" default="odom" />
   <arg name="move_forward_only" default="false"/>
+  <arg name="algorithm" default="a-star"/>
 
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -17,7 +18,7 @@
     <rosparam file="$(find ttb_astar)/param/dwa_local_planner_params_burger.yaml" command="load" />
     
     <!-- Arquivo de configuração do planejador global para Astar -->
-    <rosparam file="$(find ttb_astar)/param/planner-a-star.yaml" command="load" />
+    <rosparam file="$(find ttb_astar)/param/planner-$(arg algorithm).yaml" command="load" />
 
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
